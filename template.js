@@ -44,7 +44,7 @@ class Readme {
 
             Please refer to the LICENSE in the repo.
             `
-        return 
+        return template;
     }
 }
 
