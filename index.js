@@ -1,23 +1,45 @@
 const inquirer = require('inquirer');
 
-inquirer
-    .prompt([
-        {
-            type: 'input',
-            message: 'type 1',
-            name: 'one'
-        }
-    ])
-    .then((response) => 
-        response.one == 1
-            ? console.log('Yay!')
-            : console.log('Thats not a one!?')
-    );
+const questions = [
+    {
+        type: 'input',
+        message: 'Enter Project Title:',
+        name: 'title'
+    },
+    {
+        type: 'input',
+        message: 'Enter Project Description:',
+        name: 'description'
+    },
+    {
+        type: 'editor',
+        name: 'install',
+        message: 'Enter Installation Instructions:'
+    },
+    {
+        type: 'editor',
+        name: 'usage',
+        message: 'Enter Usage Instructions:'
+    },
+    {
+        type: 'editor',
+        name: 'contribution',
+        message: 'Enter Contribution Guidelines:'
+    },
+    {
+        type: 'editor',
+        name: 'test',
+        message: 'Enter Test Instructions:'
+    }
+];
+
+inquirer.prompt(questions).then((response) => {
+        console.log(`\n\n ${response.title} \n\n ${response.description} \n\n ${response.install} \n\n ${response.usage} \n\n ${response.contribution} \n\n ${response.test}`);
+    });
     // GIVEN a command-line application that accepts user input
     // WHEN I am prompted for information about my application repository
     // THEN a high-quality, professional README.md is generated with the title of my project and sections entitled Description, Table of Contents, Installation, Usage, License, Contributing, Tests, and Questions
-    // WHEN I enter my project title
-    // THEN this is displayed as the title of the README
+    
     // WHEN I enter a description, installation instructions, usage information, contribution guidelines, and test instructions
     // THEN this information is added to the sections of the README entitled Description, Installation, Usage, Contributing, and Tests
     // WHEN I choose a license for my application from a list of options
