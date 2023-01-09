@@ -1,4 +1,5 @@
 const inquirer = require('inquirer');
+const Readme = require('./template');
 
 const questions = [
     {
