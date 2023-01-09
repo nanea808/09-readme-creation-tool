@@ -1,9 +1,11 @@
 class Readme {
-    constructor (title, description, link, install = 'N/A') {
+    constructor (title, description, install = 'N/A', usage = 'N/A', contribution = 'N/A', test = 'N/A') {
         this.title = title;
         this.description = description;
-        this.link = link;
         this.install = install;
+        this.usage = usage;
+        this.contribution = contribution;
+        this.test = test;
     }
     
     buildReadme() {
@@ -14,27 +16,21 @@ class Readme {
 
             ${this.description}
 
-            ## Visuals
-
-            This is the website layout:
-
-            ![site-image]()
-
-            ## Link
-
-            [${this.link}](https://${this.link})
-
             ## Installation
 
             ${this.install}
 
             ## Usage
 
-            Step 1: Enter desired city into the input box.
+            ${this.usage}
 
-            Step 2: Click the search button or press enter.
+            ## Contribution Guidelines
 
-            Step 3: Wait for your weather data to show on the screen.
+            ${this.contribution}
+
+            ## Test Instructions
+
+            ${this.test}
 
             ## Credits
 
