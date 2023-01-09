@@ -34,9 +34,18 @@ const questions = [
     }
 ];
 
-inquirer.prompt(questions).then((answers) => {
-    console.log(buildReadme(answers.title, answers.description, answers.install, answers.usage, answers.contribution, answers.test));
-});
+inquirer
+    .prompt(questions)
+    .then((answers) => {
+        console.log(buildReadme(answers.title, answers.description, answers.install, answers.usage, answers.contribution, answers.test));
+    })
+    .catch((error) => {
+        if (error.isTtyError) {
+            // Prompt couldn't be rendered in the current environment
+          } else {
+            // Something else went wrong
+          }
+    });
 
     // GIVEN a command-line application that accepts user input
     // WHEN I am prompted for information about my application repository
