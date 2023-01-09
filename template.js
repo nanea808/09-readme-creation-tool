@@ -1,36 +1,26 @@
-class Readme {
-    constructor (title, description, install = 'N/A', usage = 'N/A', contribution = 'N/A', test = 'N/A') {
-        this.title = title;
-        this.description = description;
-        this.install = install;
-        this.usage = usage;
-        this.contribution = contribution;
-        this.test = test;
-    }
-    
-    buildReadme() {
-        const template = `
-            # ${this.title}
+const buildReadme = (title, description, install, usage, contribution, test) => {
+    const template = `
+            # ${title}
 
             ## Description
 
-            ${this.description}
+            ${description}
 
             ## Installation
 
-            ${this.install}
+            ${install}
 
             ## Usage
 
-            ${this.usage}
+            ${usage}
 
             ## Contribution Guidelines
 
-            ${this.contribution}
+            ${contribution}
 
             ## Test Instructions
 
-            ${this.test}
+            ${test}
 
             ## Credits
 
@@ -40,8 +30,7 @@ class Readme {
 
             Please refer to the LICENSE in the repo.
             `
-        return template;
-    }
+    return template;
 }
 
-module.exports = template;
+module.exports = buildReadme;
