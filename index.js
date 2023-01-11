@@ -1,5 +1,6 @@
 const inquirer = require('inquirer');
 const buildReadme = require('./template');
+const fs = require('fs');
 
 const questions = [
     {
@@ -31,13 +32,20 @@ const questions = [
         type: 'editor',
         name: 'test',
         message: 'Enter Test Instructions:'
+    },
+    {
+        type: 'list',
+        name: 'license',
+        message: 'Pick a license:',
+        choices: ['ISC', 'MIT']
     }
 ];
 
 inquirer
     .prompt(questions)
     .then((answers) => {
-        console.log(buildReadme(answers.title, answers.description, answers.install, answers.usage, answers.contribution, answers.test));
+        const readmeText = buildReadme(answers.title, answers.description, answers.install, answers.usage, answers.contribution, answers.test, answers.license);
+        fs.writeFileSync(`db/README.md`, readmeText);
     })
     .catch((error) => {
         if (error.isTtyError) {
@@ -51,7 +59,6 @@ inquirer
     // WHEN I am prompted for information about my application repository
     // THEN a high-quality, professional README.md is generated with the title of my project and sections entitled Description, Table of Contents, Installation, Usage, License, Contributing, Tests, and Questions
 
-    // WHEN I choose a license for my application from a list of options
     // THEN a badge for that license is added near the top of the README and a notice is added to the section of the README entitled License that explains which license the application is covered under
     // WHEN I enter my GitHub username
     // THEN this is added to the section of the README entitled Questions, with a link to my GitHub profile
