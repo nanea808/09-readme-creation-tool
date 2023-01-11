@@ -16,11 +16,11 @@ Step 3: Look in ./db file for generated README.md.
 
 ## Contribution Guidelines
 
-
+N/A
 
 ## Test Instructions
 
-
+N/A
 
 ## Credits
 
