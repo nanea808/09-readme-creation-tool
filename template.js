@@ -1,47 +1,20 @@
-class Readme {
-    constructor (title, description, install = 'N/A', usage = 'N/A', contribution = 'N/A', test = 'N/A') {
-        this.title = title;
-        this.description = description;
-        this.install = install;
-        this.usage = usage;
-        this.contribution = contribution;
-        this.test = test;
-    }
+const buildReadme = (title, description, install, usage, contribution = 'N/A', test = 'N/A', license = 'Please refer to the LICENSE in the repo.') => {
+
+    let licenseBadge = null;
+    switch (license) {
+        case 'MIT':
+            licenseBadge = '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)';
+            break;
+        case 'ISC':
+            licenseBadge = '[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)';
+            break;
     
-    buildReadme() {
-        const template = `
-            # ${this.title}
-
-            ## Description
-
-            ${this.description}
-
-            ## Installation
-
-            ${this.install}
-
-            ## Usage
-
-            ${this.usage}
-
-            ## Contribution Guidelines
-
-            ${this.contribution}
-
-            ## Test Instructions
-
-            ${this.test}
-
-            ## Credits
-
-            N/A
-
-            ## License
-
-            Please refer to the LICENSE in the repo.
-            `
-        return template;
+        default:
+            break;
     }
+
+    const template = `# ${title} ${licenseBadge}\n\n## Description\n\n${description}\n\n## Installation\n\n${install}\n\n## Usage\n\n${usage}\n\n## Contribution Guidelines\n\n${contribution}\n\n## Test Instructions\n\n${test}\n\n## Credits\n\nN/A\n\n## License\n\n${license}`
+    return template;
 }
 
-module.exports = template;
+module.exports = buildReadme;
