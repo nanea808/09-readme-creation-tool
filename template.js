@@ -13,7 +13,7 @@ const buildReadme = (title, description, install, usage, contribution = 'N/A', t
             break;
     }
 
-    const template = `# ${title} ${licenseBadge}\n\n## Description\n\n${description}\n\n## Installation\n\n${install}\n\n## Usage\n\n${usage}\n\n## Contribution Guidelines\n\n${contribution}\n\n## Test Instructions\n\n${test}\n\n## Credits\n\nN/A\n\n## License\n\n${license}`
+    const template = `# ${title}\n\n${licenseBadge}\n\n## Description\n\n${description}\n\n## Installation\n\n${install}\n\n## Usage\n\n${usage}\n\n## Contribution Guidelines\n\n${contribution}\n\n## Test Instructions\n\n${test}\n\n## Credits\n\nN/A\n\n## License\n\n${license}`
     return template;
 }
 
