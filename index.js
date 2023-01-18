@@ -2,7 +2,10 @@ const inquirer = require('inquirer');
 const buildReadme = require('./template');
 const fs = require('fs');
 
-const questions = [
+const usageSteps = [];
+let x = 1;
+
+const questions1 = [
     {
         type: 'input',
         name: 'title',
@@ -14,15 +17,27 @@ const questions = [
         name: 'description'
     },
     {
-        type: 'editor',
+        type: 'input',
         name: 'install',
         message: 'Enter Installation Instructions:'
+    }
+];
+
+const questions2 = [
+    {
+        type: 'input',
+        name: 'usage',
+        message: 'Enter Usage Instructions\n Step 1.'
     },
     {
-        type: 'editor',
-        name: 'usage',
-        message: 'Enter Usage Instructions:'
-    },
+        type: 'confirm',
+        name: 'askAgain',
+        message: 'Want to add another step (hit enter for YES)?',
+        default: true
+    }
+];
+
+const questions3 = [
     {
         type: 'editor',
         name: 'contribution',
@@ -41,11 +56,13 @@ const questions = [
     }
 ];
 
-inquirer
-    .prompt(questions)
-    .then((answers) => {
-        const readmeText = buildReadme(answers.title, answers.description, answers.install, answers.usage, answers.contribution, answers.test, answers.license);
-        fs.writeFileSync(`db/README.md`, readmeText);
+inquirer.prompt(questions1).then((answers) => {
+        const answers1 = answers;
+        console.log('\n');
+        ask();
+
+        // const readmeText = buildReadme(answers.title, answers.description, answers.install, answers.usage, answers.contribution, answers.test, answers.license);
+        // fs.writeFileSync(`db/README.md`, readmeText);
     })
     .catch((error) => {
         if (error.isTtyError) {
@@ -54,6 +71,18 @@ inquirer
             // Something else went wrong
           }
     });
+
+    function ask() {
+        inquirer.prompt(questions2).then((answers) => {
+            usageSteps.push(answers.usage);
+            if (answers.askAgain) {
+                questions2[0].message = `Step ${++x}.`;
+                ask();
+            } else {
+                console.log(`\nAdded usage steps.\n`);
+            }
+        });
+    }
 
     // GIVEN a command-line application that accepts user input
     // WHEN I am prompted for information about my application repository
