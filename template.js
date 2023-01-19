@@ -18,7 +18,7 @@ const buildReadme = (answers1, usageSteps, answers3) => {
     const usage = () => {
         let steps = '';
         for (const step in usageSteps) {
-            const newStep = `${step + 1}. ${usageSteps[step]}\n`;
+            const newStep = `${parseInt(step) + 1}. ${usageSteps[step]}\n`;
             steps += newStep;
         }
         return steps;
