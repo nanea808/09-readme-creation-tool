@@ -2,7 +2,9 @@ const inquirer = require('inquirer');
 const buildReadme = require('./template');
 const fs = require('fs');
 
+let answers1 = null;
 const usageSteps = [];
+let answers3 = null;
 let x = 1;
 
 const questions1 = [
@@ -13,8 +15,8 @@ const questions1 = [
     },
     {
         type: 'input',
-        message: 'Enter Project Description:',
-        name: 'description'
+        name: 'description',
+        message: 'Enter Project Description:'
     },
     {
         type: 'input',
@@ -57,7 +59,7 @@ const questions3 = [
 ];
 
 inquirer.prompt(questions1).then((answers) => {
-    const answers1 = answers;
+    answers1 = answers;
     console.log('\n');
     ask();
 })
@@ -78,9 +80,9 @@ function ask() {
         } else {
             console.log(`\nAdded usage steps.\n`);
             inquirer.prompt(questions3).then((answers) => {
-                const answers3 = answers;
-                // const readmeText = buildReadme(answers.title, answers.description, answers.install, answers.usage, answers.contribution, answers.test, answers.license);
-                // fs.writeFileSync(`db/README.md`, readmeText);
+                answers3 = answers;
+                const readmeText = buildReadme(answers1, usageSteps, answers3);
+                fs.writeFileSync(`db/README.md`, readmeText);
             });
         }
     });
