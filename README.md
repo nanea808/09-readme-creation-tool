@@ -1,18 +1,21 @@
-# README creation tool
+# README.md Generator
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Description
 
-This node program lets you build a custom README.
+Creates a README.md based off user input.
 
 ## Installation
 
-Use the command `npm install` to install node packages.
+run `npm i`
 
 ## Usage
 
-Step 1: Use the command `npm start` to run the program.
-Step 2: Type your answer for each prompt.
-Step 3: Your custom README will save to the readmes file.
+1. run `npm start`
+2. Enter answers to each prompt
+3. Look in ./db for generated README.md
+
 
 ## Contribution Guidelines
 
@@ -28,4 +31,4 @@ N/A
 
 ## License
 
-Please refer to the LICENSE in the repo.
+MIT
