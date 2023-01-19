@@ -41,12 +41,12 @@ const questions2 = [
 
 const questions3 = [
     {
-        type: 'editor',
+        type: 'input',
         name: 'contribution',
         message: 'Enter Contribution Guidelines:'
     },
     {
-        type: 'editor',
+        type: 'input',
         name: 'test',
         message: 'Enter Test Instructions:'
     },
